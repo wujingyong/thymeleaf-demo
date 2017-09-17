@@ -1,6 +1,12 @@
 package com.wjy.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Table(name = "tbl_emp")
 public class Employee {
@@ -18,7 +24,10 @@ public class Employee {
     @Column(name = "d_id")
     private Integer dId;
 
-    private String abc;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "create_time")
+    private Date createTime;
 
     /**
      * @return emp_id
@@ -90,17 +99,11 @@ public class Employee {
         this.dId = dId;
     }
 
-    /**
-     * @return abc
-     */
-    public String getAbc() {
-        return abc;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    /**
-     * @param abc
-     */
-    public void setAbc(String abc) {
-        this.abc = abc;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

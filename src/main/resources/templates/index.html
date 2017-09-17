@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
-    <title>Tymeleaf</title>
+    <title>thymeleaf</title>
 </head>
 <body>
 <tr th:each="emp : ${info.list}">
-    <td th:text="${emp.empId}">1</td>
-    <td><a href="#" th:text="${emp.empName}">Title ...</a></td>
-    <br/>
+    <td th:text="${emp.empId}">id</td>
+    <td th:text="${emp.empName}">name</td>
+    <td th:text="${emp.gender == 'f' ? '女':'男'}">gender</td>
+    <td th:text="${emp.email}">email</td>
+    <td th:text="${emp.dId}">did</td>
+    <td th:text="${#dates.format(emp.createTime, 'yyyy-MM-dd HH:mm:ss')}">createTime</td>
+    <br/><br/>
 </tr>
 </body>
 </html>
